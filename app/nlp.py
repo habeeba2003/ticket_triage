@@ -9,7 +9,10 @@ nltk.download("wordnet", quiet=True)
 
 _lemmatizer = WordNetLemmatizer()
 _NEGATIONS = {"no", "nor", "not"}
-_STOP_WORDS = set(stopwords.words("english")) - _NEGATIONS
+_STOP_WORDS = {
+    w for w in stopwords.words("english")
+    if w not in _NEGATIONS and not w.endswith("n't")
+}
 
 
 def clean_text(text: str) -> str:

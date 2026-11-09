@@ -1,4 +1,5 @@
-from app.schemas import TicketRequest, TicketEcho
+from app import nlp
+from app.schemas import TicketRequest, TicketEcho, PreprocessResponse
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -22,4 +23,14 @@ def analyze_ticket(ticket: TicketRequest):
         received_text=ticket.text,
         customer_id=ticket.customer_id,
         word_count=len(ticket.text.split()),
+    )
+
+@app.post("/tickets/preprocess", response_model=PreprocessResponse)
+def preprocess_ticket(ticket: TicketRequest):
+    tokens = nlp.preprocess(ticket.text)
+    return PreprocessResponse(
+        original=ticket.text,
+        cleaned=nlp.clean_text(ticket.text),
+        tokens=tokens,
+        token_count=len(tokens),
     )

@@ -10,3 +10,9 @@ class TicketEcho(BaseModel):
     received_text: str
     customer_id: int | None
     word_count: int
+
+class PreprocessResponse(BaseModel):
+    original: str
+    cleaned: str
+    tokens: list[str]
+    token_count: int
