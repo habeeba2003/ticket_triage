@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "text": "I was charged twice for my last order and need a refund.",
+    "category": "billing",
+    "priority": "high"
+  },
+  {
+    "id": 2,
+    "text": "I can't log in to my account, the password reset email never arrives.",
+    "category": "login",
+    "priority": "high"
+  },
+  {
+    "id": 3,
+    "text": "My package was supposed to arrive last week but tracking shows no updates.",
+    "category": "shipping",
+    "priority": "medium"
+  },
+  {
+    "id": 4,
+    "text": "I was charged twice for my subscription this month. Please check and refund the extra payment.",
+    "category": "billing",
+    "priority": "high"
+  },
+  {
+    "id": 5,
+    "text": "The amount deducted from my bank account is higher than the subscription price.",
+    "category": "billing",
+    "priority": "high"
+  },
+  {
+    "id": 6,
+    "text": "I cancelled my plan last week, but I still received a bill.",
+    "category": "billing",
+    "priority": "medium"
+  },
+  {
+    "id": 7,
+    "text": "My payment failed, but the money was deducted from my account.",
+    "category": "billing",
+    "priority": "high"
+  },
+  {
+    "id": 8,
+    "text": "Where can I download my previous monthly invoices?",
+    "category": "billing",
+    "priority": "low"
+  },
+  {
+    "id": 9,
+    "text": "I can't sign in to my account even though I am entering the correct password.",
+    "category": "login",
+    "priority": "high"
+  },
+  {
+    "id": 10,
+    "text": "My account has been locked and I cannot access any of my information.",
+    "category": "login",
+    "priority": "high"
+  },
+  {
+    "id": 11,
+    "text": "The password I usually use is suddenly not working. How can I get back in?",
+    "category": "login",
+    "priority": "medium"
+  },
+  {
+    "id": 12,
+    "text": "I am not receiving the OTP on my registered mobile number during login.",
+    "category": "login",
+    "priority": "medium"
+  },
+  {
+    "id": 13,
+    "text": "I forgot my password and the password reset link is not arriving in my email.",
+    "category": "login",
+    "priority": "medium"
+  },
+  {
+    "id": 14,
+    "text": "My order was supposed to arrive yesterday, but it has still not been delivered.",
+    "category": "shipping",
+    "priority": "high"
+  },
+  {
+    "id": 15,
+    "text": "The tracking page says delivered, but I haven't received my package.",
+    "category": "shipping",
+    "priority": "high"
+  },
+  {
+    "id": 16,
+    "text": "Can you tell me where my parcel is? The tracking status has not changed for five days.",
+    "category": "shipping",
+    "priority": "medium"
+  },
+  {
+    "id": 17,
+    "text": "I received the wrong item instead of the product I ordered.",
+    "category": "shipping",
+    "priority": "medium"
+  },
+  {
+    "id": 18,
+    "text": "My package arrived with damaged packaging and the product inside is broken.",
+    "category": "shipping",
+    "priority": "high"
+  },
+  {
+    "id": 19,
+    "text": "The application crashes every time I try to open it.",
+    "category": "technical",
+    "priority": "high"
+  },
+  {
+    "id": 20,
+    "text": "The website keeps freezing whenever I click on the dashboard.",
+    "category": "technical",
+    "priority": "medium"
+  }
+]
