@@ -1,5 +1,11 @@
-from app import nlp
-from app.schemas import TicketRequest, TicketEcho, PreprocessResponse
+from app import nlp, embeddings
+from app.schemas import (
+    TicketRequest, 
+    TicketEcho, 
+    PreprocessResponse,
+    SimilarResponse,
+)
+
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -34,3 +40,8 @@ def preprocess_ticket(ticket: TicketRequest):
         tokens=tokens,
         token_count=len(tokens),
     )
+
+@app.post("/tickets/similar", response_model=SimilarResponse)
+def similar_tickets(ticket: TicketRequest):
+    results = embeddings.find_similar(ticket.text, top_k=3)
+    return SimilarResponse(query=ticket.text, results=results)

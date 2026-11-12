@@ -16,3 +16,15 @@ class PreprocessResponse(BaseModel):
     cleaned: str
     tokens: list[str]
     token_count: int
+
+class SimilarTicket(BaseModel):
+    id: int
+    text: str
+    category: str
+    priority: str
+    score: float
+
+
+class SimilarResponse(BaseModel):
+    query: str
+    results: list[SimilarTicket]
