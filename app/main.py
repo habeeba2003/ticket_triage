@@ -4,6 +4,7 @@ from app.schemas import (
     TicketEcho, 
     PreprocessResponse,
     SimilarResponse,
+    CategoryResponse,
 )
 
 from fastapi import FastAPI
@@ -45,3 +46,13 @@ def preprocess_ticket(ticket: TicketRequest):
 def similar_tickets(ticket: TicketRequest):
     results = embeddings.find_similar(ticket.text, top_k=3)
     return SimilarResponse(query=ticket.text, results=results)
+
+@app.post("/tickets/category", response_model=CategoryResponse)
+def suggest_ticket_category(ticket: TicketRequest):
+    result = embeddings.suggest_category(ticket.text)
+    return CategoryResponse(
+        query=ticket.text,
+        suggested_category=result["category"],
+        confidence=result["confidence"],
+        matches=result["matches"],
+    )

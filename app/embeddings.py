@@ -18,3 +18,20 @@ def find_similar(text: str, top_k: int = 3) -> list[dict]:
         reverse=True,
     )
     return [{**ticket, "score": round(score, 3)} for ticket, score in ranked[:top_k]]
+
+def suggest_category(text: str, top_k: int = 5) -> dict:
+    matches = find_similar(text, top_k=top_k)
+
+    totals: dict[str, float] = {}
+    for match in matches:
+        category = match["category"]
+        totals[category] = totals.get(category, 0.0) + match["score"]
+
+    best = max(totals, key=totals.get)
+    confidence = totals[best] / sum(totals.values())
+
+    return {
+        "category": best,
+        "confidence": round(confidence, 3),
+        "matches": matches,
+    }

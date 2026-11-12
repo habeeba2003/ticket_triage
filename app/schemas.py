@@ -24,7 +24,14 @@ class SimilarTicket(BaseModel):
     priority: str
     score: float
 
+class CategoryResponse(BaseModel):
+    query: str
+    suggested_category: str
+    confidence: float
+    matches: list[SimilarTicket]
+
 
 class SimilarResponse(BaseModel):
     query: str
     results: list[SimilarTicket]
+
