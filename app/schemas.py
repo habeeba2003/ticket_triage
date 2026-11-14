@@ -1,5 +1,6 @@
 # A schema is a description of what data should look like.
 
+from typing import Literal
 from pydantic import BaseModel, Field 
 
 class TicketRequest(BaseModel):
@@ -35,3 +36,10 @@ class SimilarResponse(BaseModel):
     query: str
     results: list[SimilarTicket]
 
+class LLMAnalysis(BaseModel):
+    category: Literal["urgent"]
+    priority: Literal["high"]
+    summary: "x"
+    suggested_reply: "y"
+
+#"billing", "login", "shipping", "technical", "unknown"
