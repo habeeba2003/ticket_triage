@@ -37,9 +37,8 @@ class SimilarResponse(BaseModel):
     results: list[SimilarTicket]
 
 class LLMAnalysis(BaseModel):
-    category: Literal["urgent"]
-    priority: Literal["high"]
-    summary: "x"
-    suggested_reply: "y"
+    category: Literal["billing", "login", "shipping", "technical", "unknown"]
+    priority: Literal["low", "medium", "high"]
+    summary: str
+    suggested_reply: str
 
-#"billing", "login", "shipping", "technical", "unknown"
