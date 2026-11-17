@@ -1,13 +1,19 @@
+import logging
+
+from fastapi import FastAPI, HTTPException
+
 from app import nlp, embeddings
+from app.llm import analyze_with_llm, LLMError
 from app.schemas import (
     TicketRequest, 
     TicketEcho, 
     PreprocessResponse,
     SimilarResponse,
     CategoryResponse,
+    AnalyzeResponse,
 )
 
-from fastapi import FastAPI
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -24,12 +30,23 @@ def welcome():
 def project():
     return {"project": "Ticket Triage"}
 
-@app.post("/tickets/analyze", response_model=TicketEcho)
+@app.post("/tickets/analyze", response_model=AnalyzeResponse)
 def analyze_ticket(ticket: TicketRequest):
-    return TicketEcho(
-        received_text=ticket.text,
-        customer_id=ticket.customer_id,
-        word_count=len(ticket.text.split()),
+    similar = embeddings.find_similar(ticket.text, top_k=3)
+
+    try:
+        analysis = analyze_with_llm(ticket.text, similar)
+    except LLMError as exc:
+        logger.error("LLM failure: %s", exc)
+        raise HTTPException(
+            status_code=502,
+            detail="The AI analysis service is unavailable. Please try again.",
+        )
+
+    return AnalyzeResponse(
+        query=ticket.text,
+        analysis=analysis,
+        similar_tickets=similar,
     )
 
 @app.post("/tickets/preprocess", response_model=PreprocessResponse)

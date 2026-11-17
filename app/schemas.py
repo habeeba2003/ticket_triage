@@ -42,3 +42,8 @@ class LLMAnalysis(BaseModel):
     summary: str
     suggested_reply: str
 
+class AnalyzeResponse(BaseModel):
+    query: str
+    analysis: LLMAnalysis
+    similar_tickets: list[SimilarTicket]
+
