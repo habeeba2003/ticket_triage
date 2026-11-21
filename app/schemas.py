@@ -4,7 +4,7 @@ from typing import Literal
 from pydantic import BaseModel, Field 
 
 class TicketRequest(BaseModel):
-    text: str = Field(min_length=5, max_leangth=2000)
+    text: str = Field(min_length=5, max_length=2000)
     customer_id: int | None = None
 
 class TicketEcho(BaseModel):
