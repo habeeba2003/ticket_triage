@@ -187,8 +187,9 @@ The bugs taught me more than the features did:
 - **LLM output needs validation and review.** Even with an instruction not to promise refunds, one draft reply still did. That is why replies are drafts and every answer is checked against a schema.
 - **Read errors from the bottom.** The last line of a traceback names the problem, and the last file path that is yours shows where.
 
+
 ## About the author
 
-Hi, I'm **Habeeba M N**, I built this project to understand how classic NLP and an LLM work together inside a real API, and to be able to explain every part of it.
+Hi, I'm **Habeeba**, and I built this project to learn how NLP and an LLM work together inside a real API.
 
 Questions, ideas and bug reports are welcome. Open an issue on this repository.
